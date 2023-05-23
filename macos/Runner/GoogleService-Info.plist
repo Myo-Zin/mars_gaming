@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>873556556575-c3m2oh28poi3bpjjp5lf3q6famq119nh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.873556556575-c3m2oh28poi3bpjjp5lf3q6famq119nh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDNF5mzM3zslxuj09PqRsr65aSwTz-Npr8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>873556556575</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.marsgaming.marsGaming</string>
+	<key>PROJECT_ID</key>
+	<string>crypto-da28a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>crypto-da28a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:873556556575:ios:b4952fdf22d4dcb11bce2a</string>
+	<key>DATABASE_URL</key>
+	<string>https://crypto-da28a-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

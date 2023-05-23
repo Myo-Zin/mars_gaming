@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1090758221545",
+    "firebase_url": "https://marsgaming-40c0d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "marsgaming-40c0d",
+    "storage_bucket": "marsgaming-40c0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090758221545:android:579f5a073bae165bf51a78",
+        "android_client_info": {
+          "package_name": "com.marsgaming.mars_gaming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090758221545-n08ip25vhqh610r3m3boo4bhh430qmfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzLaRVvxFhSCKDknNtgzJrv3obKukllW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090758221545-n08ip25vhqh610r3m3boo4bhh430qmfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
