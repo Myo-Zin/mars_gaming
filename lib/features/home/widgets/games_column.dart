@@ -6,9 +6,6 @@ import '../../../core/widgets/disable_scroll_effect_widget.dart';
 import '../../../utils/route.dart';
 import '../../games/widgets/game_listview.dart';
 import '../../games/widgets/games_by_category_detial_widget.dart';
-import '../../games/widgets/hot_new_game_listview.dart';
-import '../../games/widgets/how_new_game_gridview.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'lottery_widget.dart';
 
 class HomeGameMenu extends StatelessWidget {
@@ -21,7 +18,9 @@ class HomeGameMenu extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
-            const SizedBox(height: 8,),
+            const SizedBox(
+              height: 8,
+            ),
             const LotteryListViewWidget(),
             GameListViewWidget(
               title: AppLocalizations.of(context).football,
@@ -29,7 +28,7 @@ class HomeGameMenu extends StatelessWidget {
               onTap: () {
                 goto(
                   context,
-                  page:  GamesByCategoryDetailWidget(
+                  page: GamesByCategoryDetailWidget(
                     title: AppLocalizations.of(context).football,
                     gameType: GameType.football,
                   ),
@@ -42,7 +41,7 @@ class HomeGameMenu extends StatelessWidget {
               onTap: () {
                 goto(
                   context,
-                  page:  GamesByCategoryDetailWidget(
+                  page: GamesByCategoryDetailWidget(
                     title: AppLocalizations.of(context).cardGame,
                     gameType: GameType.card,
                   ),
@@ -68,7 +67,7 @@ class HomeGameMenu extends StatelessWidget {
               onTap: () {
                 goto(
                   context,
-                  page:  GamesByCategoryDetailWidget(
+                  page: GamesByCategoryDetailWidget(
                     title: AppLocalizations.of(context).slotGame,
                     gameType: GameType.slot,
                   ),
@@ -81,7 +80,7 @@ class HomeGameMenu extends StatelessWidget {
               onTap: () {
                 goto(
                   context,
-                  page:  GamesByCategoryDetailWidget(
+                  page: GamesByCategoryDetailWidget(
                     title: AppLocalizations.of(context).fishingGame,
                     gameType: GameType.fishing,
                   ),
@@ -94,7 +93,7 @@ class HomeGameMenu extends StatelessWidget {
               onTap: () {
                 goto(
                   context,
-                  page:  GamesByCategoryDetailWidget(
+                  page: GamesByCategoryDetailWidget(
                     title: AppLocalizations.of(context).liveCasino,
                     gameType: GameType.casino,
                   ),

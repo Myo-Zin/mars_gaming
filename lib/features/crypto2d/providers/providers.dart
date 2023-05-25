@@ -1,10 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/features/crypto2d/providers/selected_crypto_two_d_controller.dart';
 
-
 import '../../../core/providers/date_controller.dart';
 import '../../../core/providers/dio_provider.dart';
-import '../../2d/models/thai_two_d_live.dart';
 import '../models/crypto_two_d.dart';
 import '../models/crypto_two_d_live.dart';
 import '../models/crypto_two_d_lucky_number.dart';

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+
 import '../../../core/global_variables.dart';
 import '../../../core/providers/date_state.dart';
 import '../../../utils/failure.dart';
@@ -103,7 +104,9 @@ class ThreeDService {
       rethrow;
     }
   }
-  Future<List<ThreeDLuckyNumberHistory>> getThreeDLuckyNumberHistory(DateState ds) async {
+
+  Future<List<ThreeDLuckyNumberHistory>> getThreeDLuckyNumberHistory(
+      DateState ds) async {
     try {
       final resp = await dio.get(
         UrlConst.threeDLuckyNumHistoryUrl(
@@ -115,8 +118,7 @@ class ThreeDService {
         ),
       );
       final list = ThreeDLuckyNumberHistoryResponse.fromJson(resp.data);
-      print("$list");
-      return list.data??[];
+      return list.data ?? [];
     } on DioError {
       rethrow;
     }

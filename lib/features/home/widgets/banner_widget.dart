@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,10 +20,10 @@ class BannerWidget extends ConsumerWidget {
             items: images
                 .map(
                   (e) => ClipRRect(
-                borderRadius: BorderRadius.circular(13),
-                child: KNetworkImage(url: e.mbImage!),
-              ),
-            )
+                    borderRadius: BorderRadius.circular(13),
+                    child: KNetworkImage(url: e.mbImage!),
+                  ),
+                )
                 .toList(),
             options: CarouselOptions(
               aspectRatio: 18 / 9,
@@ -44,10 +43,12 @@ class BannerWidget extends ConsumerWidget {
             borderRadius: BorderRadius.circular(13),
             color: AppColor.secondColor,
           ),
-          child: AppErrorWidget(error: error,
+          child: AppErrorWidget(
+            error: error,
             onRetry: () {
-              ref.refresh(bannerControllerProvider);
-            },),
+              ref.invalidate(bannerControllerProvider);
+            },
+          ),
         ),
       ),
       loading: () => AspectRatio(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../l10n/l10n.dart';
 import '../../../l10n/local_provider.dart';
 import '../../../l10n/util.dart';
 import '../../../utils/app_color.dart';
-import '../../../utils/app_theme.dart';
 import '../../../utils/route.dart';
 import '../../2d/pages/two_d_betslips_page.dart';
 import '../../3d/pages/three_d_bet_slips_page.dart';
@@ -15,11 +15,8 @@ import '../../games/pages/game_report_page.dart';
 import '../../referral/pages/referral_history_page.dart';
 import '../models/profile_response.dart';
 import '../pages/update_profile_page.dart';
-import 'listile_row.dart';
 import 'logout_dialog.dart';
 import 'profile_image_widget.dart';
-import 'show_language_dialog.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileWidget extends ConsumerWidget {
   final ProfileData profile;
@@ -95,7 +92,7 @@ class ProfileWidget extends ConsumerWidget {
               ),
             ),
             _buildCard("Crypto${AppLocalizations.of(context).twodSlips}",
-                    () => {goto(context, page: const CryptoTwoDBetSlipsPage())}),
+                () => {goto(context, page: const CryptoTwoDBetSlipsPage())}),
             _buildCard(AppLocalizations.of(context).twodSlips,
                 () => {goto(context, page: const TwoDBetSlipsPage())}),
             _buildCard(AppLocalizations.of(context).threedSlips,
@@ -105,9 +102,7 @@ class ProfileWidget extends ConsumerWidget {
             _buildCard1(
                 AppLocalizations.of(context).referralHistory,
                 "${AppLocalizations.of(context).friend} : ${profile.referCount != null ? profile.referCount.toString() : "0"}",
-                () => {
-                      goto(context, page:  ReferralPage(profile))
-                    }),
+                () => {goto(context, page: ReferralPage(profile))}),
             _buildCard2(AppLocalizations.of(context).referralCode,
                 "${profile.referral}", () {
               Clipboard.setData(ClipboardData(text: profile.referral))
@@ -117,9 +112,9 @@ class ProfileWidget extends ConsumerWidget {
               });
             }),
             _buildCard3(
-                AppLocalizations.of(context).language,L10n.getLanguage(local.languageCode), () => {
-                showLanguageDialog(context,ref)
-            })
+                AppLocalizations.of(context).language,
+                L10n.getLanguage(local.languageCode),
+                () => {showLanguageDialog(context, ref)})
             // Container(
             //   decoration: AppTheme.containerDecoration,
             //   child: ListTileRow(
@@ -191,7 +186,6 @@ class ProfileWidget extends ConsumerWidget {
     );
   }
 
-
   Widget _buildCard(String title, Function() onPressed) {
     return InkWell(
       onTap: onPressed,
@@ -261,7 +255,7 @@ class ProfileWidget extends ConsumerWidget {
             ),
             InkWell(
               onTap: onPressed,
-              child: Icon(
+              child: const Icon(
                 Icons.copy,
               ),
             )

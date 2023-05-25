@@ -1,7 +1,5 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/crypto_two_d_lucky_number.dart';
@@ -27,7 +25,9 @@ class CryptoTwoDDailyLuckyNumberNotifier
       try {
         // DatabaseReference databaseReference =
         //     FirebaseDatabase.instance.ref("list/data");
-        DatabaseReference databaseReference = FirebaseDatabase.instanceFor(app: Firebase.app("secondApp")).ref("list/data");
+        DatabaseReference databaseReference =
+            FirebaseDatabase.instanceFor(app: Firebase.app("secondApp"))
+                .ref("list/data");
         DatabaseEvent event = await databaseReference.once();
         final snapshot = event.snapshot;
         if (snapshot.exists) {

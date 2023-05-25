@@ -78,7 +78,6 @@ class _WinnerTwoDListPageState extends ConsumerState<WinnerTwoDListPage> {
                   ),
                 ),
               );
-        ;
       },
       loading: () => const Center(
         child: CircularProgressIndicator(),
@@ -86,7 +85,7 @@ class _WinnerTwoDListPageState extends ConsumerState<WinnerTwoDListPage> {
       error: (msg, stack) => AppErrorWidget(
         error: msg,
         onRetry: () {
-          ref.refresh(winnerControllerProvider(UrlConst.twoDWinnerListUrl));
+          ref.invalidate(winnerControllerProvider(UrlConst.twoDWinnerListUrl));
         },
       ),
     );

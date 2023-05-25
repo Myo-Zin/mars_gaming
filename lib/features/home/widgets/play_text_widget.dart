@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marquee/marquee.dart';
@@ -8,7 +7,7 @@ import '../../../utils/app_color.dart';
 import '../providers/providers.dart';
 
 class PlayTextWidget extends ConsumerWidget {
-  const                PlayTextWidget({super.key});
+  const PlayTextWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -50,7 +49,7 @@ class PlayTextWidget extends ConsumerWidget {
         child: AppErrorWidget(
           error: error,
           onRetry: () {
-            ref.refresh(playTextControllerProvider);
+            ref.invalidate(playTextControllerProvider);
           },
         ),
       ),

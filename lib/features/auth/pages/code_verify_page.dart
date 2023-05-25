@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/async_value_ui.dart';
 import 'package:mars_gaming/utils/extension.dart';
 
 import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
-import '../../../utils/route.dart';
 import '../models/registeration_form.dart';
 import '../providers/providers.dart';
 import '../widgets/logo_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'change_password_page.dart';
 
 class CodeVerifyPage extends ConsumerStatefulWidget {
   final RegisterationForm? registerationForm;
@@ -96,15 +93,14 @@ class _CodeVerifyPageState extends ConsumerState<CodeVerifyPage> {
                           : () async {
                               if (codeController.text.isNotEmpty) {
                                 if (widget.phoneForForgotPassword != null) {
-
                                   ref
                                       .read(registerScreenController.notifier)
                                       .checkCodeForForgotPassword(
-                                    context: context,
-                                    verificationId: widget.verificationId,
-                                    smsCode: codeController.text,
-                                    phone: widget.phoneForForgotPassword!,
-                                  );
+                                        context: context,
+                                        verificationId: widget.verificationId,
+                                        smsCode: codeController.text,
+                                        phone: widget.phoneForForgotPassword!,
+                                      );
                                   // final otpResponse = await ref
                                   //     .read(registerScreenController.notifier)
                                   //     .verifyOtp(
@@ -130,15 +126,14 @@ class _CodeVerifyPageState extends ConsumerState<CodeVerifyPage> {
                                   //     content: Text("Error"),
                                   //   );
                                   // }
-
                                 } else {
-                                ref
+                                  ref
                                       .read(registerScreenController.notifier)
                                       .checkCodeForRegister(
-                                    verificationId: widget.verificationId,
-                                    smsCode: codeController.text,
-                                    rf: widget.registerationForm!,
-                                  )
+                                        verificationId: widget.verificationId,
+                                        smsCode: codeController.text,
+                                        rf: widget.registerationForm!,
+                                      )
                                       .then((value) {
                                     if (value) {
                                       context.showSuccessSnackbar(

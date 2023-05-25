@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/strings.dart';
 import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
 import '../../profile/models/profile_response.dart';
 import '../../profile/providers/providers.dart';
 import 'balance_transfer_dialog.dart';
-
-
 
 class MainBalanceCard extends ConsumerWidget {
   final ProfileData profile;
@@ -27,7 +24,7 @@ class MainBalanceCard extends ConsumerWidget {
               children: [
                 _BalanceCard(
                   title: AppLocalizations.of(context).mainBalance,
-                 // image: AssetString.dollor,
+                  // image: AssetString.dollor,
                   balance: '${profile.balance ?? 0}  MMK',
                 ),
                 const SizedBox(height: 10),
@@ -60,7 +57,7 @@ class MainBalanceCard extends ConsumerWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    child: Icon(CupertinoIcons.repeat),
+                    child: const Icon(CupertinoIcons.repeat),
                   ),
                 ),
               ),
@@ -70,7 +67,7 @@ class MainBalanceCard extends ConsumerWidget {
         const SizedBox(height: 10),
         _BalanceCard(
           title: AppLocalizations.of(context).turnOver,
-         // image: AssetString.turnover,
+          // image: AssetString.turnover,
           balance: '${double.parse(profile.turnover ?? '0')}',
         ),
       ],
@@ -87,7 +84,6 @@ class _BalanceCard extends StatelessWidget {
 
   final String title;
   final String balance;
-
 
   @override
   Widget build(BuildContext context) {

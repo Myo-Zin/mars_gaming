@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../core/widgets/custom_date_picker.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_theme.dart';
 import '../providers/providers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CryptoTwoDLuckyNumberHistoryPage extends ConsumerStatefulWidget {
   const CryptoTwoDLuckyNumberHistoryPage({super.key});
@@ -115,51 +115,51 @@ class _CashInHistoryPageState
                   // padding: const EdgeInsets.symmetric(vertical: 15),
                   // itemBuilder: (context, index) {
                   //   final history = list[index];
-                  return Scrollbar(
-                    thumbVisibility: true,
-                    thickness: 1,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        headingTextStyle: AppTextStyle.yellowMedium
-                            .copyWith(color: Colors.blueGrey),
-                        columns: const [
-                          DataColumn(
-                            label: Text("Date"),
-                          ),
-                          DataColumn(
-                            label: Text("Time"),
-                          ),
-                          DataColumn(
-                            label: Text("Lucky Number"),
-                          ),
-                        ],
-                        rows: List.generate(list.length, (index) {
-                          final history = list[index];
-                          return DataRow(
-                            cells: [
-                              DataCell(
-                                Text("${history.createDate}"),
-                              ),
-                              DataCell(
-                                Text("${history.section}"),
-                              ),
-                              DataCell(
-                                Center(child: Text("${history.luckyNumber}")),
-                              )
-                            ],
-                          );
-                        }),
-                      ),
-                    ),
-                  );
-                  //   },
+                  // return Scrollbar(
+                  //   thumbVisibility: true,
+                  //   thickness: 1,
+                  //   child: SingleChildScrollView(
+                  //     scrollDirection: Axis.horizontal,
+                  //     child: DataTable(
+                  //       headingTextStyle: AppTextStyle.yellowMedium
+                  //           .copyWith(color: Colors.blueGrey),
+                  //       columns: const [
+                  //         DataColumn(
+                  //           label: Text("Date"),
+                  //         ),
+                  //         DataColumn(
+                  //           label: Text("Time"),
+                  //         ),
+                  //         DataColumn(
+                  //           label: Text("Lucky Number"),
+                  //         ),
+                  //       ],
+                  //       rows: List.generate(list.length, (index) {
+                  //         final history = list[index];
+                  //         return DataRow(
+                  //           cells: [
+                  //             DataCell(
+                  //               Text("${history.createDate}"),
+                  //             ),
+                  //             DataCell(
+                  //               Text("${history.section}"),
+                  //             ),
+                  //             DataCell(
+                  //               Center(child: Text("${history.luckyNumber}")),
+                  //             )
+                  //           ],
+                  //         );
+                  //       }),
+                  //     ),
+                  //   ),
+                  // );
+                  // //   },
                   // )
                 },
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(cryptoTwoDLuckyNumberHistoryController);
+                    ref.invalidate(cryptoTwoDLuckyNumberHistoryController);
                   },
                 ),
               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
 import 'package:readmore/readmore.dart';
+
 import '../../../core/widgets/custom_network_image.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_color.dart';
@@ -41,7 +42,7 @@ class _PromotionPageState extends ConsumerState<PromotionPage> {
             data: (promotionList) {
               return RefreshIndicator(
                 onRefresh: () async {
-                  ref.refresh(promotionController);
+                  ref.invalidate(promotionController);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
@@ -184,7 +185,7 @@ class _PromotionPageState extends ConsumerState<PromotionPage> {
             error: (error, s) => AppErrorWidget(
               error: error,
               onRetry: () {
-                ref.refresh(promotionController);
+                ref.invalidate(promotionController);
               },
             ),
             loading: () => const Center(child: CircularProgressIndicator()),

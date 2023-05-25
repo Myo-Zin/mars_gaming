@@ -10,9 +10,6 @@ import '../../../utils/date_time_helper.dart';
 import '../providers/balance_transfer_history_controller.dart';
 import '../providers/providers.dart';
 
-
-
-
 class BalanceTransferHistoryPage extends ConsumerStatefulWidget {
   final String title;
   final BalanceTransferType type;
@@ -164,7 +161,7 @@ class _BalanceTransferHistoryPageState
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(
+                    ref.invalidate(
                         balanceTransferHistoryControllerProvider(widget.type));
                   },
                 ),

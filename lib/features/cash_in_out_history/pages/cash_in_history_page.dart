@@ -117,7 +117,7 @@ class _CashInHistoryPageState extends ConsumerState<CashInHistoryPage> {
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(cashInHistoryControllerProvider);
+                    ref.invalidate(cashInHistoryControllerProvider);
                   },
                 ),
               ),

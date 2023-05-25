@@ -6,7 +6,6 @@ import '../../../utils/app_color.dart';
 import '../models/game_report_detail_param.dart';
 import '../providers/providers.dart';
 
-
 class GameReportDetailPage extends ConsumerWidget {
   const GameReportDetailPage({super.key, required this.param});
   final GameReportDetailParam param;
@@ -27,7 +26,7 @@ class GameReportDetailPage extends ConsumerWidget {
               Expanded(
                 child: RefreshIndicator(
                   onRefresh: () async {
-                    ref.refresh(gameReportDetailController(param));
+                    ref.invalidate(gameReportDetailController(param));
                   },
                   child: ListView.separated(
                     padding: const EdgeInsets.symmetric(vertical: 10),
@@ -72,7 +71,7 @@ class GameReportDetailPage extends ConsumerWidget {
           child: AppErrorWidget(
             error: error,
             onRetry: () {
-              ref.refresh(gameReportDetailController(param).notifier);
+              ref.invalidate(gameReportDetailController(param));
             },
           ),
         ),

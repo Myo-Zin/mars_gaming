@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
-import '../../../utils/route.dart';
 import '../providers/providers.dart';
 import '../widgets/logo_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'code_verify_page.dart';
 
 class ForgotPasswordPage extends ConsumerStatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -74,14 +72,15 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                                         phone: phoneTextController.text);
                                 if (mounted) {
                                   if (mesg == null) {
-                                    context.showErrorSnackbar("Phone does not exit");
+                                    context.showErrorSnackbar(
+                                        "Phone does not exit");
                                   } else {
                                     ref
                                         .read(registerScreenController.notifier)
                                         .verifyPhoneForForgotPassword(
-                                      phone: phoneTextController.text,
-                                      context: context,
-                                    );
+                                          phone: phoneTextController.text,
+                                          context: context,
+                                        );
                                     // goto(
                                     //   context,
                                     //   page: CodeVerifyPage(

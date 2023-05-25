@@ -126,7 +126,7 @@ class _GamesByCategoryState extends ConsumerState<GamesByCategoryDetailWidget> {
           return AppErrorWidget(
             error: error,
             onRetry: () {
-              ref.refresh(gameCategoryControllerProvider(widget.gameType));
+              ref.invalidate(gameCategoryControllerProvider(widget.gameType));
             },
           );
         },
@@ -151,8 +151,7 @@ class CategoryTabImage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedCategoryId = ref.watch(selectedCategoryNotifier(gameType));
-    print("category id ${category.id}");
-    print("selectedCategoryId ${selectedCategoryId}");
+
     final bool isUnitedGaming = category.img == "storage/providers/UG.png";
     final bool isPG =
         category.img == "storage/providers/pg-soft-pg-soft-logo_1.png";
@@ -169,7 +168,7 @@ class CategoryTabImage extends ConsumerWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             //shape: BoxShape.circle,
-            color: (selectedCategoryId??0) == category.id
+            color: (selectedCategoryId ?? 0) == category.id
                 ? AppColor.accentColor
                 : AppColor.textColor,
           ),

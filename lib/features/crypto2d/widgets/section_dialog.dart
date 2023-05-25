@@ -6,7 +6,6 @@ import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/date_time_helper.dart';
 import '../../../utils/route.dart';
-import '../../2d/pages/two_d_betting_page.dart';
 import '../pages/crypto_two_d_betting_page.dart';
 import '../providers/providers.dart';
 
@@ -81,7 +80,8 @@ class _TwoDSectionWidget extends ConsumerWidget {
                       return;
                     }
                     Navigator.pop(context);
-                    goto(context, page: CryptoTwoDBettingPage(section: sectionTime));
+                    goto(context,
+                        page: CryptoTwoDBettingPage(section: sectionTime));
                   },
                   leading: Icon(
                     Icons.access_time,

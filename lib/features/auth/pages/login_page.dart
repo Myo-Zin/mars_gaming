@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/async_value_ui.dart';
 
 import '../../../utils/app_color.dart';
@@ -12,6 +12,7 @@ import '../providers/providers.dart';
 import '../widgets/logo_widget.dart';
 import 'forgot_password_page.dart';
 import 'register_page.dart';
+
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key, this.isfromDialog = false});
   final bool isfromDialog;
@@ -60,29 +61,39 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Center(child: const LogoImageWidget()),
+                  const Center(child: LogoImageWidget()),
                   const SizedBox(height: 20),
-                  Text(AppLocalizations.of(context).phone,style: TextStyle(color: AppColor.accentColor),),
-                  const SizedBox(height: 8,),
+                  Text(
+                    AppLocalizations.of(context).phone,
+                    style: TextStyle(color: AppColor.accentColor),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
                   TextFormField(
                     validator: (value) => Validator.phoneValidate(value),
                     keyboardType: TextInputType.phone,
                     controller: phoneTextController,
                     decoration: AppTheme.authTextFieldDecoration.copyWith(
-                      //hintText: AppLocalizations.of(context).phone,
-                     // prefixIcon: const Icon(Icons.phone),
-                    ),
+                        //hintText: AppLocalizations.of(context).phone,
+                        // prefixIcon: const Icon(Icons.phone),
+                        ),
                   ),
                   const SizedBox(height: 30),
-                  Text(AppLocalizations.of(context).password,style: TextStyle(color: AppColor.accentColor),),
-                  const SizedBox(height: 8,),
+                  Text(
+                    AppLocalizations.of(context).password,
+                    style: TextStyle(color: AppColor.accentColor),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
                   TextFormField(
                     validator: (value) => Validator.valueExists(value),
                     controller: passwordTextController,
                     obscureText: obsecure,
                     decoration: AppTheme.authTextFieldDecoration.copyWith(
-                     // hintText: AppLocalizations.of(context).password,
-                     // prefixIcon: const Icon(Icons.lock),
+                      // hintText: AppLocalizations.of(context).password,
+                      // prefixIcon: const Icon(Icons.lock),
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -124,7 +135,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 color: AppColor.textColor,
                               ),
                             )
-                          :  Text(AppLocalizations.of(context).login),
+                          : Text(AppLocalizations.of(context).login),
                     ),
                   ),
                   const SizedBox(height: 18),
@@ -134,9 +145,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         onPressed: () {
                           goto(context, page: const ForgotPasswordPage());
                         },
-                        child:  Text(AppLocalizations.of(context).forgetPassword),
+                        child:
+                            Text(AppLocalizations.of(context).forgetPassword),
                       ),
-                      
                       Expanded(
                         child: Align(
                           alignment: Alignment.centerRight,
@@ -144,13 +155,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             onPressed: () {
                               goto(context, page: const RegisterPage());
                             },
-                            child:  Text(AppLocalizations.of(context).register),
+                            child: Text(AppLocalizations.of(context).register),
                           ),
                         ),
                       )
                     ],
                   ),
-
                 ],
               ),
             ),

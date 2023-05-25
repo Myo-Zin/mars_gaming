@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
@@ -14,7 +16,6 @@ import '../../cash_in_out_history/pages/cash_out_history_page.dart';
 import '../../profile/models/profile_response.dart';
 import '../../profile/providers/providers.dart';
 import '../widgets/main_balance_card.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WalletPage extends ConsumerStatefulWidget {
   const WalletPage({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class _WalletState extends ConsumerState<WalletPage> {
           return AppErrorWidget(
             error: error.message,
             onRetry: () {
-              ref.refresh(profileControllerProvider);
+              ref.invalidate(profileControllerProvider);
             },
           );
         },
@@ -117,7 +118,6 @@ class _BuildWalletWidget extends StatelessWidget {
                 ),
               ],
             ),
-
             _HistoryListTile(
               title: AppLocalizations.of(context).cashinHistory,
               page: const CashInHistoryPage(),

@@ -9,7 +9,6 @@
 //     section = json['section'];
 //   }
 // }
-import 'package:firebase_database/firebase_database.dart';
 
 class CryptoTwoDLuckyNumber {
   String? c2d;

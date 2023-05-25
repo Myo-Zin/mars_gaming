@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
 import 'package:super_banners/super_banners.dart';
 
-
 import '../../../core/enum.dart';
 import '../../../core/widgets/custom_network_image.dart';
 import '../../../core/widgets/error_widget.dart';
@@ -14,7 +13,6 @@ import '../../../utils/url_constants.dart';
 import '../../profile/providers/providers.dart';
 import '../../profile/widgets/login_dialog.dart';
 import '../providers/providers.dart';
-
 
 class HotNewGameListViewWidget extends ConsumerWidget {
   final String title;
@@ -42,8 +40,7 @@ class HotNewGameListViewWidget extends ConsumerWidget {
             height: 220,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: AppColor.secondColor)
-            ),
+                border: Border.all(color: AppColor.secondColor)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -153,7 +150,8 @@ class HotNewGameListViewWidget extends ConsumerWidget {
                                   "${games[index].name}",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                      fontSize: 12.0, fontWeight: FontWeight.bold),
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold),
                                   maxLines: 2,
                                 )
                               ],
@@ -180,7 +178,7 @@ class HotNewGameListViewWidget extends ConsumerWidget {
         child: AppErrorWidget(
           error: error,
           onRetry: () {
-            ref.refresh(hotNewGameControllerProvider);
+            ref.invalidate(hotNewGameControllerProvider);
           },
         ),
       ),
@@ -199,63 +197,59 @@ class _GameListViewLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Padding(
-        padding: const EdgeInsets.only(top: 8),
-        child: Container(
-          // color: Colors.red,
-          // margin: const EdgeInsets.symmetric(
-          //   vertical: 8.0,
-          //   horizontal: 8.0,
-          // ),
-          height: 227,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColor.secondColor)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        title,
-                        style: AppTextStyle.yellowTitle,
-                      ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Container(
+        // color: Colors.red,
+        // margin: const EdgeInsets.symmetric(
+        //   vertical: 8.0,
+        //   horizontal: 8.0,
+        // ),
+        height: 227,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppColor.secondColor)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: AppTextStyle.yellowTitle,
                     ),
-                    TextButton(onPressed: (){
-
-                    }, child: const Text("More>>"))
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                          width: 130,
-                          child: Container(
-                            // padding: const EdgeInsets.all(8),
-                            margin: const EdgeInsets.only(right: 10),
-                            decoration: BoxDecoration(
-                              color: AppColor.secondColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            height: 117,
-                          ) );
-                    },
                   ),
+                  TextButton(onPressed: () {}, child: const Text("More>>"))
+                ],
+              ),
+              const SizedBox(height: 4),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                        width: 130,
+                        child: Container(
+                          // padding: const EdgeInsets.all(8),
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            color: AppColor.secondColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          height: 117,
+                        ));
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    );
     //   Container(
     //   margin: const EdgeInsets.symmetric(
     //     // vertical: 15.0,

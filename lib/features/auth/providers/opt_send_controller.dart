@@ -1,15 +1,5 @@
-import 'dart:developer';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../utils/route.dart';
-import '../../../utils/sharepref.dart';
-import '../models/auth_state.dart';
-import '../models/registeration_form.dart';
-import '../pages/change_password_page.dart';
-import '../pages/code_verify_page.dart';
 import '../repository/auth_repository.dart';
 
 class OTPSendNotifier extends StateNotifier<AsyncValue<void>> {

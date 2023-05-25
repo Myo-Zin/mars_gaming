@@ -23,11 +23,7 @@ class ReferralPage extends ConsumerStatefulWidget {
 }
 
 class _ReferralHistoryPageState extends ConsumerState<ReferralPage> {
-  var items = [
-    '2D',
-    '3D',
-     'Crypto 2D'
-  ];
+  var items = ['2D', '3D', 'Crypto 2D'];
   String dropDownValue = '2D';
 
   @override
@@ -150,10 +146,12 @@ class _ReferralHistoryPageState extends ConsumerState<ReferralPage> {
                       // After selecting the desired option,it will
                       // change button value to selected value
                       onChanged: (String? newValue) {
-
                         ref
                             .watch(dateController.notifier)
-                            .changeDateAndGameType(type: newValue == 'Crypto 2D'? 'c2d': newValue!);
+                            .changeDateAndGameType(
+                                type: newValue == 'Crypto 2D'
+                                    ? 'c2d'
+                                    : newValue!);
                         setState(() {
                           dropDownValue = newValue!;
                         });
@@ -225,7 +223,7 @@ class _ReferralHistoryPageState extends ConsumerState<ReferralPage> {
             error: (msg) => AppErrorWidget(
               error: msg,
               onRetry: () {
-                ref.refresh(referralController);
+                ref.invalidate(referralController);
               },
             ),
           ))

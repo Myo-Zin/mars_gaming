@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/widgets/error_widget.dart';
 import '../providers/providers.dart';
 import '../widgets/social_link_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactPage extends ConsumerWidget {
   const ContactPage({super.key});
@@ -14,19 +15,19 @@ class ContactPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title:  Text(AppLocalizations.of(context).contact),
+        title: Text(AppLocalizations.of(context).contact),
       ),
       body: socialController.when(
         data: (data) => RefreshIndicator(
           onRefresh: () async {
-            ref.refresh(socialLinkControllerProvider);
+            ref.invalidate(socialLinkControllerProvider);
           },
           child: SocialLinkWidget(social: data),
         ),
         error: (error, stackTrace) => AppErrorWidget(
           error: error,
           onRetry: () {
-            ref.refresh(socialLinkControllerProvider);
+            ref.invalidate(socialLinkControllerProvider);
           },
         ),
         loading: () => const Center(child: CircularProgressIndicator()),

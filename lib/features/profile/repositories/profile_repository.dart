@@ -8,7 +8,6 @@ import '../../../utils/failure.dart';
 import '../models/profile_response.dart';
 import '../service/profile_service.dart';
 
-
 class ProfileRepository {
   ProfileRepository(this._profileService);
 
@@ -54,8 +53,6 @@ class ProfileRepository {
           await _profileService.uploadLevel2Image(token: token, image: file);
       return right(result);
     } on DioError catch (e) {
-      print("error ${e.message}");
-      print("error ${e.type}");
       return left(DioException.fromDioError(e).failure);
     }
   }

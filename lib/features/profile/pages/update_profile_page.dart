@@ -79,8 +79,6 @@ class _UpdateProfilePageState extends ConsumerState<UpdateProfilePage> {
     // birthDayTextController.text = "${selectedDate.toLocal()}".split(' ')[0];
     final localImageFile = ref.watch(profileImagePickControllerProvider);
 
-
-
     return Scaffold(
         appBar: AppBar(
           title: Text(AppLocalizations.of(context).editProfile),
@@ -191,15 +189,18 @@ class _UpdateProfilePageState extends ConsumerState<UpdateProfilePage> {
                           readOnly: true,
                         ),
                         const SizedBox(height: 30),
-                        if(widget.profileData.referralId == null)  TextFormField(
-                          // validator: (value) => Validator.phoneValidate(value),
-                          keyboardType: TextInputType.text,
-                          controller: referralTextController,
-                          decoration: AppTheme.authTextFieldDecoration.copyWith(
-                            hintText: "Enter referral code",
-                            prefixIcon: const Icon(Icons.person_add_alt_outlined),
+                        if (widget.profileData.referralId == null)
+                          TextFormField(
+                            // validator: (value) => Validator.phoneValidate(value),
+                            keyboardType: TextInputType.text,
+                            controller: referralTextController,
+                            decoration:
+                                AppTheme.authTextFieldDecoration.copyWith(
+                              hintText: "Enter referral code",
+                              prefixIcon:
+                                  const Icon(Icons.person_add_alt_outlined),
+                            ),
                           ),
-                        ),
                         // TextFormField(
                         //   validator: (value) => Validator.valueExists(value),
                         //   controller: passwordTextController,
@@ -240,20 +241,22 @@ class _UpdateProfilePageState extends ConsumerState<UpdateProfilePage> {
                                               profileUpdateController.notifier)
                                           .updateProfile(
                                             uf: UpdateProfileForm(
-                                              token: widget.profileData.token!,
-                                              name: nameTextController.text,
-                                              email: emailTextController.text,
-                                              image: localImageFile,
-                                              birthday:
-                                                  birthDayTextController.text,
-                                              referral: referralTextController.text
-                                            ),
+                                                token:
+                                                    widget.profileData.token!,
+                                                name: nameTextController.text,
+                                                email: emailTextController.text,
+                                                image: localImageFile,
+                                                birthday:
+                                                    birthDayTextController.text,
+                                                referral: referralTextController
+                                                    .text),
                                           );
                                       if (isSuccess) {
                                         if (mounted) {
                                           Navigator.pop(context);
-                                          context.showSuccessSnackbar("Profile update success");
-                                           ref.refresh(
+                                          context.showSuccessSnackbar(
+                                              "Profile update success");
+                                          ref.invalidate(
                                               profileControllerProvider);
                                         }
                                       }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../core/widgets/custom_date_picker.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_theme.dart';
@@ -116,7 +117,7 @@ class _CashOutHistoryPageState extends ConsumerState<CashOutHistoryPage> {
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(cashOutHistoryControllerProvider);
+                    ref.invalidate(cashOutHistoryControllerProvider);
                   },
                 ),
               ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:store_checker/store_checker.dart';
 
@@ -6,7 +5,6 @@ import '../../../core/strings.dart';
 import '../../profile/widgets/show_update_dialog.dart';
 import '../services/home_api_service.dart';
 import '../widgets/bottom_nav_widget.dart';
-
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -40,7 +38,6 @@ class _FirstPageState extends State<FirstPage> {
     Source installationSource = await StoreChecker.getSource;
     final hasPlayStore =
         installationSource == Source.IS_INSTALLED_FROM_PLAY_STORE;
-    print("appUpdateData?.versionCode${appVersionCode}");
     final bool noUpdate = (appUpdateData?.versionCode ?? 0) <= appVersionCode;
     if (appUpdateData == null || noUpdate) {
       _goto();
@@ -72,6 +69,7 @@ class _FirstPageState extends State<FirstPage> {
     );
   }
 }
+
 bool showWallet = false;
 
 //TODO please update this version number everytime you update to new version

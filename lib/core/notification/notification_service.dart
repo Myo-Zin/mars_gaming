@@ -2,15 +2,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-
-import '../../../firebase_options.dart';
 import '../../main.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 late AndroidNotificationChannel channel;
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-
   await initializeFirebase();
 
   await setupFlutterNotifications();
@@ -68,7 +65,7 @@ void showFlutterNotification(RemoteMessage message) {
           channelDescription: channel.description,
           // TODO add a proper drawable resource to android, for now using
           //      one that already exists in example app.
-          icon:  '@mipmap/ic_launcher',
+          icon: '@mipmap/ic_launcher',
           //largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
         ),
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/features/3d/providers/three_d_lucky_number_state.dart';
+
 import '../../../core/providers/date_state.dart';
 import '../../../utils/failure.dart';
 import '../../auth/providers/providers.dart';
-import '../models/three_d_lucky_number_history.dart';
 import '../repositories/three_d_repository.dart';
 
 class ThreeDLuckyNumberHistoryNotifier

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-
 import '../../../core/providers/date_state.dart';
 import '../../../utils/dio_exception.dart';
 import '../../../utils/failure.dart';
@@ -20,7 +19,6 @@ class CashInOutHistoryRepository {
   Future<Either<Failure, List<CashInHistory>>> getCashInHistory(
     DateState dateState,
   ) async {
-    print("text${dateState.token}");
     try {
       final result = await service.getCashInHistory(
         token: dateState.token!,
@@ -33,7 +31,7 @@ class CashInOutHistoryRepository {
 
       return right(result);
     } on DioError catch (e) {
-      log(e.response?.data??"gg");
+      log(e.response?.data ?? "gg");
       return left(DioException.fromDioError(e).failure);
     }
   }

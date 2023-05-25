@@ -79,7 +79,6 @@ class _WinnerCryptoListPageState extends ConsumerState<WinnerCryptoListPage> {
                   ),
                 ),
               );
-        ;
       },
       loading: () => const Center(
         child: CircularProgressIndicator(),
@@ -87,7 +86,7 @@ class _WinnerCryptoListPageState extends ConsumerState<WinnerCryptoListPage> {
       error: (msg, stack) => AppErrorWidget(
         error: msg,
         onRetry: () {
-          ref.refresh(
+          ref.invalidate(
               winnerControllerProvider(UrlConst.cryptoTwoDWinnerListUrl));
         },
       ),

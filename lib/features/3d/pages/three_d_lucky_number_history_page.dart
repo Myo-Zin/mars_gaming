@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../core/widgets/custom_date_picker.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_theme.dart';
 import '../providers/providers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThreeDLuckyNumberHistoryPage extends ConsumerStatefulWidget {
   const ThreeDLuckyNumberHistoryPage({super.key});
@@ -113,7 +114,7 @@ class _CashInHistoryPageState
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(threeDLuckyNumberHistoryController);
+                    ref.invalidate(threeDLuckyNumberHistoryController);
                   },
                 ),
               ),

@@ -87,11 +87,8 @@ class ProfileService {
 
       FormData formDataT = FormData.fromMap({
         "image": await MultipartFile.fromFile(image!.path, filename: fileName)
-
       });
 
-      print("file.path ${image?.path}");
-      print("testing ${formDataT}");
       final resp = await _dio.post(
         UrlConst.uploadLevelTwoPhotoUrl,
         data: formDataT,
@@ -99,7 +96,6 @@ class ProfileService {
           headers: authHeader(token),
         ),
       );
-      print("testing $resp");
       return resp.statusCode == 200 ? true : false;
     } on DioError {
       rethrow;

@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/features/3d/pages/three_d_bet_preview_page.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../utils/app_color.dart';
 import '../../../utils/route.dart';
 import '../../2d/pages/two_d_betting_page.dart';
@@ -13,7 +14,6 @@ import '../models/three_d_section.dart';
 import '../providers/providers.dart';
 import '../providers/three_d_filter_controller.dart';
 import '../widgets/three_d_quick_select_dialog.dart';
-
 
 class ThreeDBettingPage extends ConsumerStatefulWidget {
   final ThreeDSection section;
@@ -49,7 +49,6 @@ class _ThreeDBettingPageState extends ConsumerState<ThreeDBettingPage> {
   @override
   Widget build(BuildContext context) {
     final selectedThreeD = ref.watch(selectedThreeDController);
-    print("open date ${widget.section.openDate}");
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -176,7 +175,7 @@ class _TextFieldRow extends ConsumerWidget {
 //  final String section;
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final threeDList = ref.watch(selectedThreeDController);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -244,8 +243,8 @@ class _TextFieldRow extends ConsumerWidget {
                   context.showErrorSnackbar("Please enter amount".hardCoded);
                   return;
                 }
-                if (_checkAmount(context, threeDList,
-                    double.parse(amountController.text))) {
+                if (_checkAmount(
+                    context, threeDList, double.parse(amountController.text))) {
                   return;
                 }
                 FocusScope.of(context).unfocus();
@@ -268,8 +267,9 @@ class _TextFieldRow extends ConsumerWidget {
       ),
     );
   }
-  bool _checkAmount(BuildContext context, List<ThreeD> threeDList,
-      double amount) {
+
+  bool _checkAmount(
+      BuildContext context, List<ThreeD> threeDList, double amount) {
     bool result = true;
     for (final cryptoTwoD in threeDList) {
       if (amount < cryptoTwoD.defaultAmount!) {

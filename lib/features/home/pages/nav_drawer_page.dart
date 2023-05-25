@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/enum.dart';
@@ -19,20 +19,12 @@ import '../../profile/pages/upload_leve_2_photo_page.dart';
 import '../../profile/providers/profile_image_controller.dart';
 import '../../profile/providers/providers.dart';
 import '../../profile/widgets/logout_dialog.dart';
-import '../../profile/widgets/profile_image_widget.dart';
 import '../../winners_list/page/winner_list_page.dart';
 import '../providers/nav_controller.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../widgets/persistance_tabbar.dart';
 import 'first_page.dart';
 
 class DrawerPage extends ConsumerStatefulWidget {
-  const DrawerPage(
-    this._controller, {
-    Key? key,
-  }) : super(key: key);
-  final TabController _controller;
+  const DrawerPage({Key? key}) : super(key: key);
 
   @override
   ConsumerState<DrawerPage> createState() => _DrawerPageState();
@@ -251,19 +243,19 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                       Navigator.pop(context);
                     },
                   ),
-
-                  if(showWallet)  ListTile(
-                    leading: buildIcon(
-                      Icons.shop,
+                  if (showWallet)
+                    ListTile(
+                      leading: buildIcon(
+                        Icons.shop,
+                      ),
+                      title: buildText(AppLocalizations.of(context).wallet),
+                      onTap: () {
+                        ref
+                            .read(naviIndexControllerProvider.notifier)
+                            .changeIndex(2);
+                        Navigator.pop(context);
+                      },
                     ),
-                    title: buildText(AppLocalizations.of(context).wallet),
-                    onTap: () {
-                      ref
-                          .read(naviIndexControllerProvider.notifier)
-                          .changeIndex(2);
-                      Navigator.pop(context);
-                    },
-                  ),
                   ListTile(
                     leading: buildIcon(
                       CupertinoIcons.speaker_fill,
@@ -279,7 +271,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                 ],
               ),
             ),
-
             Card(
               //elevation: 5,
               shape: RoundedRectangleBorder(
@@ -384,79 +375,78 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
             ),
             Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),),
-              child: Column(children: [
-
-
-                ListTile(
-                  leading: buildIcon(Icons.group),
-                  title: buildText(AppLocalizations.of(context).winnerList),
-                  onTap: () {
-                    // setState(() {
-                    //   widget._controller.index = 1;
-                    //   tabarIndexNotifier.value = 1;
-                    // });
-                    // Navigator.pop(context);
-                    Navigator.pop(context);
-                    goto(context, page: const WinnerListPage());
-                  },
-                ),
-
-                ListTile(
-                  leading: buildIcon(Icons.list_alt),
-                  title: buildText("Crypto${AppLocalizations.of(context).twodSlips}"),
-                  onTap: () {
-                    // setState(() {
-                    //   widget._controller.index = 1;
-                    //   tabarIndexNotifier.value = 1;
-                    // });
-                    // Navigator.pop(context);
-                    Navigator.pop(context);
-                    goto(context, page: const CryptoTwoDBetSlipsPage());
-                  },
-                ),
-                ListTile(
-                  leading: buildIcon(Icons.list_alt),
-                  title: buildText(AppLocalizations.of(context).twodSlips ),
-                  onTap: () {
-                    // setState(() {
-                    //   widget._controller.index = 1;
-                    //   tabarIndexNotifier.value = 1;
-                    // });
-                    // Navigator.pop(context);
-                    Navigator.pop(context);
-                    goto(context, page: const  TwoDBetSlipsPage());
-                  },
-                ),
-                ListTile(
-                  leading: buildIcon(Icons.list_alt),
-                  title: buildText(AppLocalizations.of(context).threedSlips ),
-                  onTap: () {
-                    // setState(() {
-                    //   widget._controller.index = 1;
-                    //   tabarIndexNotifier.value = 1;
-                    // });
-                    // Navigator.pop(context);
-                    Navigator.pop(context);
-                    goto(context, page: const ThreeDBetSlipsPage());
-                  },
-                ),
-
-                ListTile(
-                  leading: buildIcon(Icons.games),
-                  title: buildText(AppLocalizations.of(context).gameHistory ),
-                  onTap: () {
-                    // setState(() {
-                    //   widget._controller.index = 1;
-                    //   tabarIndexNotifier.value = 1;
-                    // });
-                    // Navigator.pop(context);
-                    Navigator.pop(context);
-                    goto(context, page: const GameReportPage());
-                  },
-                ),
-
-              ],),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: buildIcon(Icons.group),
+                    title: buildText(AppLocalizations.of(context).winnerList),
+                    onTap: () {
+                      // setState(() {
+                      //   widget._controller.index = 1;
+                      //   tabarIndexNotifier.value = 1;
+                      // });
+                      // Navigator.pop(context);
+                      Navigator.pop(context);
+                      goto(context, page: const WinnerListPage());
+                    },
+                  ),
+                  ListTile(
+                    leading: buildIcon(Icons.list_alt),
+                    title: buildText(
+                        "Crypto${AppLocalizations.of(context).twodSlips}"),
+                    onTap: () {
+                      // setState(() {
+                      //   widget._controller.index = 1;
+                      //   tabarIndexNotifier.value = 1;
+                      // });
+                      // Navigator.pop(context);
+                      Navigator.pop(context);
+                      goto(context, page: const CryptoTwoDBetSlipsPage());
+                    },
+                  ),
+                  ListTile(
+                    leading: buildIcon(Icons.list_alt),
+                    title: buildText(AppLocalizations.of(context).twodSlips),
+                    onTap: () {
+                      // setState(() {
+                      //   widget._controller.index = 1;
+                      //   tabarIndexNotifier.value = 1;
+                      // });
+                      // Navigator.pop(context);
+                      Navigator.pop(context);
+                      goto(context, page: const TwoDBetSlipsPage());
+                    },
+                  ),
+                  ListTile(
+                    leading: buildIcon(Icons.list_alt),
+                    title: buildText(AppLocalizations.of(context).threedSlips),
+                    onTap: () {
+                      // setState(() {
+                      //   widget._controller.index = 1;
+                      //   tabarIndexNotifier.value = 1;
+                      // });
+                      // Navigator.pop(context);
+                      Navigator.pop(context);
+                      goto(context, page: const ThreeDBetSlipsPage());
+                    },
+                  ),
+                  ListTile(
+                    leading: buildIcon(Icons.games),
+                    title: buildText(AppLocalizations.of(context).gameHistory),
+                    onTap: () {
+                      // setState(() {
+                      //   widget._controller.index = 1;
+                      //   tabarIndexNotifier.value = 1;
+                      // });
+                      // Navigator.pop(context);
+                      Navigator.pop(context);
+                      goto(context, page: const GameReportPage());
+                    },
+                  ),
+                ],
+              ),
             ),
             Card(
               //elevation: 5,
@@ -483,7 +473,7 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(Icons.logout),
                     title: buildText('Logout'),
                     onTap: () {
-                     // Navigator.pop(context);
+                      // Navigator.pop(context);
                       logoutDialog(context, ref);
                     },
                   ),

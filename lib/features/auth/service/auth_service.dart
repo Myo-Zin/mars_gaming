@@ -36,13 +36,12 @@ class AuthService {
   Future<bool> optSend({
     required String phone,
   }) async {
-    print(phone);
     try {
       final resp = await dio.post(
         UrlConst.otpSend(phone),
       );
       final msg = resp.data?["message"];
-      print("$msg");
+
       final isSuccess = msg == true;
       return isSuccess;
     } on DioError {
@@ -53,15 +52,9 @@ class AuthService {
   Future<String> checkPhone({
     required String phone,
   }) async {
-    print("testing phone $phone");
     try {
-      final resp = await dio.post(
-        UrlConst.checkPhone,
-        data: {
-          "phone": phone
-        }
-      );
-      print("testing ${resp.statusMessage}");
+      final resp = await dio.post(UrlConst.checkPhone, data: {"phone": phone});
+
       final msg = resp.data["success"];
       return msg;
     } on DioError {
@@ -73,16 +66,13 @@ class AuthService {
     required String phone,
     required String code,
   }) async {
-    print("testing phone $phone");
     try {
       final resp = await dio.post(
-        UrlConst.verifyOtp(phone,code),
+        UrlConst.verifyOtp(phone, code),
       );
-      print("testing ${resp.statusMessage}");
       Map valueMap = jsonDecode(resp.data);
-      print("${valueMap}");
       final list = valueMap.entries.toList();
-      OtpResponse otpResponse = OtpResponse( list[1].value, list[3].value);
+      OtpResponse otpResponse = OtpResponse(list[1].value, list[3].value);
 
       return otpResponse;
     } on DioError {
@@ -90,20 +80,18 @@ class AuthService {
     }
   }
 
-
   Future<void> sendFcmToken({
     required String bearToken,
     required String fcmToken,
   }) async {
     try {
-      final result =  await dio.post(
-       UrlConst.deviceTokenUrl,
+      final _ = await dio.post(
+        UrlConst.deviceTokenUrl,
         options: Options(headers: authHeader(bearToken)),
         data: {
           "token": fcmToken,
         },
       );
-      print("fcm reslut$result");
     } on DioError {
       rethrow;
     }

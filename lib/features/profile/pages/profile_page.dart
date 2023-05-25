@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_color.dart';
 import '../../auth/pages/login_page.dart';
 import '../providers/providers.dart';
 import '../widgets/profile_widget.dart';
+
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -40,7 +42,7 @@ class _ProfilePage extends ConsumerState<ProfilePage> {
               child: AppErrorWidget(
             error: error.message,
             onRetry: () {
-              ref.refresh(profileControllerProvider);
+              ref.invalidate(profileControllerProvider);
             },
           ));
         },

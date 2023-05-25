@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/enum.dart';
 import '../../../core/widgets/custom_network_image.dart';
 import '../../../core/widgets/error_widget.dart';
@@ -7,7 +8,6 @@ import '../../../utils/app_color.dart';
 import '../models/game_category_response.dart';
 import '../providers/providers.dart';
 import 'game_girdview.dart';
-
 
 class GamesByCategoryWidget extends ConsumerStatefulWidget {
   final GameType gameType;
@@ -116,7 +116,7 @@ class _GamesByCategoryState extends ConsumerState<GamesByCategoryWidget> {
         return AppErrorWidget(
           error: error,
           onRetry: () {
-            ref.refresh(gameCategoryControllerProvider(widget.gameType));
+            ref.invalidate(gameCategoryControllerProvider(widget.gameType));
           },
         );
       },

@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/async_value_ui.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
-import '../../../utils/url_constants.dart';
 import '../../../utils/validator.dart';
 import '../../profile/providers/providers.dart';
 import '../model/cash_in_form.dart';
 import '../model/payment_methods.dart';
 import '../provider/providers.dart';
 import '../widgets/amount_grid.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CashInPage extends ConsumerStatefulWidget {
   final String? title;
@@ -90,8 +90,7 @@ class _CashFormPageState extends ConsumerState<CashInPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                              widget.image!),
+                          image: CachedNetworkImageProvider(widget.image!),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -146,50 +145,50 @@ class _CashFormPageState extends ConsumerState<CashInPage> {
                           onPressed: cashInState.isLoading
                               ? null
                               : () {
-                            if (_formKey.currentState?.validate() ==
-                                true) {
-                              if (holderPhone == null) {
-                                context.showErrorSnackbar(
-                                    "Please Select Phone Number");
-                                return;
-                              }
-                              profile.maybeMap(
-                                data: (value) {
-                                  CashInForm form = CashInForm(
-                                    userid: value.profileData.id!,
-                                    paymentid: widget.paymentId,
-                                    accountname: nameTextController.text,
-                                    transactionid:
-                                    transactionIdTextController.text,
-                                    amount: int.parse(
-                                        amountTextController.text),
-                                    holderPhone:holderPhone,
-                                    userphone:
-                                    userPhoneTextController.text,
-                                    promoid: widget.promoId,
-                                  );
-                                  ref
-                                      .read(
-                                      cashInNotifierProvider.notifier)
-                                      .cashIn(
-                                      form, value.profileData.token!)
-                                      .then((value) {
-                                    if (value) {
-                                      context.showSuccessSnackbar(
-                                        "Cash In Success",
-                                      );
-                                      Navigator.pop(context);
-                                      Navigator.pop(context);
+                                  if (_formKey.currentState?.validate() ==
+                                      true) {
+                                    if (holderPhone == null) {
+                                      context.showErrorSnackbar(
+                                          "Please Select Phone Number");
+                                      return;
                                     }
-                                  });
+                                    profile.maybeMap(
+                                      data: (value) {
+                                        CashInForm form = CashInForm(
+                                          userid: value.profileData.id!,
+                                          paymentid: widget.paymentId,
+                                          accountname: nameTextController.text,
+                                          transactionid:
+                                              transactionIdTextController.text,
+                                          amount: int.parse(
+                                              amountTextController.text),
+                                          holderPhone: holderPhone,
+                                          userphone:
+                                              userPhoneTextController.text,
+                                          promoid: widget.promoId,
+                                        );
+                                        ref
+                                            .read(
+                                                cashInNotifierProvider.notifier)
+                                            .cashIn(
+                                                form, value.profileData.token!)
+                                            .then((value) {
+                                          if (value) {
+                                            context.showSuccessSnackbar(
+                                              "Cash In Success",
+                                            );
+                                            Navigator.pop(context);
+                                            Navigator.pop(context);
+                                          }
+                                        });
+                                      },
+                                      orElse: () {},
+                                    );
+                                  }
                                 },
-                                orElse: () {},
-                              );
-                            }
-                          },
                           child: cashInState.isLoading
                               ? const CircularProgressIndicator(
-                              color: Colors.black)
+                                  color: Colors.black)
                               : Text(AppLocalizations.of(context).cashIn),
                         ),
                       ),
@@ -245,7 +244,7 @@ class _PaymentAccount extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     ref.read(holderPhoneProvider.notifier).state =
-                    accounts[index].accountNumber!;
+                        accounts[index].accountNumber!;
                   },
                   child: Container(
                     decoration: AppTheme.containerDecoration.copyWith(
@@ -270,14 +269,21 @@ class _PaymentAccount extends StatelessWidget {
                               Text(
                                 accounts[index].accountNumber.toString(),
                                 style: TextStyle(
-                                  color: currentIndex ? Colors.black : Colors.white,
+                                  color: currentIndex
+                                      ? Colors.black
+                                      : Colors.white,
                                 ),
                               ),
-
                             ],
                           ),
                         ),
-                        Positioned(right: 1, child: Icon(currentIndex?Icons.check_circle: null,color: Colors.green,size: 20,))
+                        Positioned(
+                            right: 1,
+                            child: Icon(
+                              currentIndex ? Icons.check_circle : null,
+                              color: Colors.green,
+                              size: 20,
+                            ))
                       ],
                     ),
                   ),
@@ -290,4 +296,3 @@ class _PaymentAccount extends StatelessWidget {
     );
   }
 }
-

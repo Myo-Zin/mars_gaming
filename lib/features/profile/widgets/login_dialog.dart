@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../utils/route.dart';
 import '../../auth/pages/login_page.dart';
 
-
 loginDialog(BuildContext context) {
   showDialog(
     context: context,

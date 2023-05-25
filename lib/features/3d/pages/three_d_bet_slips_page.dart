@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../core/widgets/custom_date_picker.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/date_time_helper.dart';
 import '../providers/providers.dart';
-
 
 class ThreeDBetSlipsPage extends ConsumerStatefulWidget {
   const ThreeDBetSlipsPage({super.key});
@@ -180,7 +180,7 @@ class _CashInHistoryPageState extends ConsumerState<ThreeDBetSlipsPage> {
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(threeDBetSlipsController);
+                    ref.invalidate(threeDBetSlipsController);
                   },
                 ),
               ),

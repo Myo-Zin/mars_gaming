@@ -57,7 +57,6 @@ class AuthRepository {
     required String phone,
     required String code,
   }) async {
-    print("testing testing");
     try {
       final result = await _authService.verifyOtp(
         phone: phone,
@@ -87,8 +86,6 @@ class AuthRepository {
       return left(DioException.fromDioError(e).failure);
     }
   }
-
-
 
   Future<Either<Failure, bool>> forgotPassword({
     required String phone,

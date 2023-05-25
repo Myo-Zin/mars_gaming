@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
 
-
 import '../../../core/widgets/custom_date_picker.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../utils/app_color.dart';
@@ -14,7 +13,8 @@ import '../providers/providers.dart';
 class CryptoTwoDBetSlipsPage extends ConsumerStatefulWidget {
   const CryptoTwoDBetSlipsPage({super.key});
   @override
-  ConsumerState<CryptoTwoDBetSlipsPage> createState() => _CashInHistoryPageState();
+  ConsumerState<CryptoTwoDBetSlipsPage> createState() =>
+      _CashInHistoryPageState();
 }
 
 class _CashInHistoryPageState extends ConsumerState<CryptoTwoDBetSlipsPage> {
@@ -80,8 +80,7 @@ class _CashInHistoryPageState extends ConsumerState<CryptoTwoDBetSlipsPage> {
                           children: [
                             Text(history.date.toString()),
                             Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 2),
+                              margin: const EdgeInsets.symmetric(horizontal: 2),
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8),
                               decoration: BoxDecoration(
@@ -176,7 +175,7 @@ class _CashInHistoryPageState extends ConsumerState<CryptoTwoDBetSlipsPage> {
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(twoDBetSlipsController);
+                    ref.invalidate(twoDBetSlipsController);
                   },
                 ),
               ),

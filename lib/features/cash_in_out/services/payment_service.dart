@@ -8,8 +8,6 @@ import '../model/cash_in_form.dart';
 import '../model/cash_out_form.dart';
 import '../model/payment_methods.dart';
 
-
-
 class PaymentService {
   final Dio _dio;
 
@@ -26,7 +24,6 @@ class PaymentService {
   }
 
   Future<String> cashIn(CashInForm cashInForm, String token) async {
-    print("test out ${cashInForm.userphone}");
     try {
       final resp = await _dio.post(UrlConst.cashInUrl,
           data: {
@@ -48,8 +45,8 @@ class PaymentService {
       rethrow;
     }
   }
-  Future<String> mobileToUp(CashInForm cashInForm, String token) async {
 
+  Future<String> mobileToUp(CashInForm cashInForm, String token) async {
     try {
       final resp = await _dio.post(UrlConst.cashInUrl,
           data: {
@@ -70,8 +67,8 @@ class PaymentService {
     }
   }
 
-  Future<String> cashOut(CashOutForm cashOutForm, String token,String password) async {
-    print("test out ${cashOutForm.userphone}");
+  Future<String> cashOut(
+      CashOutForm cashOutForm, String token, String password) async {
     try {
       final resp = await _dio.post(UrlConst.cashOutUrl,
           data: {

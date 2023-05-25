@@ -29,20 +29,18 @@ class GameListViewWidget extends ConsumerWidget {
     final gameController = ref.watch(gameControllerProvider(gameType));
     return gameController.when(
       data: (games) {
-
         return Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Container(
-           // color: Colors.red,
-           //  margin: const EdgeInsets.symmetric(
-           //    vertical: 8.0,
-           //    horizontal: 8.0,
-           //  ),
+            // color: Colors.red,
+            //  margin: const EdgeInsets.symmetric(
+            //    vertical: 8.0,
+            //    horizontal: 8.0,
+            //  ),
             height: 234,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-                border: Border.all(color: AppColor.secondColor)
-            ),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: AppColor.secondColor)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -56,7 +54,13 @@ class GameListViewWidget extends ConsumerWidget {
                           style: AppTextStyle.yellowTitle,
                         ),
                       ),
-                      TextButton(onPressed: onTap, child:  Text("More>>",),style: ButtonStyle(),)
+                      TextButton(
+                        onPressed: onTap,
+                        style: const ButtonStyle(),
+                        child: const Text(
+                          "More>>",
+                        ),
+                      )
                     ],
                   ),
                   const SizedBox(height: 4),
@@ -65,7 +69,7 @@ class GameListViewWidget extends ConsumerWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: games.length,
                       itemBuilder: (context, index) {
-                      String? imageUrl =  games[index].img;
+                        String? imageUrl = games[index].img;
 
                         return GestureDetector(
                             onTap: () async {
@@ -127,14 +131,18 @@ class GameListViewWidget extends ConsumerWidget {
                                                 height: double.infinity,
                                                 child: KNetworkImage(
                                                   url: games[index].img!,
-                                                  needPrefix: imageUrl!.startsWith("/") ?true : false,
+                                                  needPrefix:
+                                                      imageUrl!.startsWith("/")
+                                                          ? true
+                                                          : false,
                                                   fit: BoxFit.cover,
                                                   addPlaceHolader: true,
                                                 ),
                                               ),
                                               CornerBanner(
                                                 bannerPosition:
-                                                    CornerBannerPosition.topLeft,
+                                                    CornerBannerPosition
+                                                        .topLeft,
                                                 bannerColor:
                                                     HexColor.fromHex("AA2E26"),
                                                 shadowColor: Colors.grey,
@@ -143,8 +151,8 @@ class GameListViewWidget extends ConsumerWidget {
                                                   "HOT",
                                                   style: TextStyle(
                                                     fontSize: 11,
-                                                    color:
-                                                        HexColor.fromHex("F6DD8A"),
+                                                    color: HexColor.fromHex(
+                                                        "F6DD8A"),
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
@@ -152,14 +160,17 @@ class GameListViewWidget extends ConsumerWidget {
                                             ],
                                           )
                                         : SizedBox(
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                          child: KNetworkImage(
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            child: KNetworkImage(
                                               url: games[index].img!,
-                                              needPrefix: imageUrl!.startsWith("/") ?true : false,
+                                              needPrefix:
+                                                  imageUrl!.startsWith("/")
+                                                      ? true
+                                                      : false,
                                               addPlaceHolader: true,
                                             ),
-                                        ),
+                                          ),
                                   ),
                                   const SizedBox(
                                     height: 4,
@@ -167,7 +178,7 @@ class GameListViewWidget extends ConsumerWidget {
                                   Text(
                                     "${games[index].name}",
                                     textAlign: TextAlign.center,
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                         fontSize: 12.0,
                                         color: AppColor.labelColor,
                                         fontWeight: FontWeight.bold),
@@ -196,7 +207,7 @@ class GameListViewWidget extends ConsumerWidget {
         child: AppErrorWidget(
           error: error,
           onRetry: () {
-            ref.refresh(gameControllerProvider(gameType));
+            ref.invalidate(gameControllerProvider(gameType));
           },
         ),
       ),
@@ -215,45 +226,41 @@ class _GameListViewLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Padding(
-        padding: const EdgeInsets.only(top: 8),
-        child: Container(
-          // color: Colors.red,
-          // margin: const EdgeInsets.symmetric(
-          //   vertical: 8.0,
-          //   horizontal: 8.0,
-          // ),
-          height: 227,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColor.secondColor)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        title,
-                        style: AppTextStyle.yellowTitle,
-                      ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Container(
+        // color: Colors.red,
+        // margin: const EdgeInsets.symmetric(
+        //   vertical: 8.0,
+        //   horizontal: 8.0,
+        // ),
+        height: 227,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppColor.secondColor)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: AppTextStyle.yellowTitle,
                     ),
-                    TextButton(onPressed: (){
-
-                    }, child: const Text("More>>"))
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
+                  ),
+                  TextButton(onPressed: () {}, child: const Text("More>>"))
+                ],
+              ),
+              const SizedBox(height: 4),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return SizedBox(
                         width: 130,
                         child: Container(
                           // padding: const EdgeInsets.all(8),
@@ -263,15 +270,15 @@ class _GameListViewLoadingWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           height: 117,
-                        ) );
-                    },
-                  ),
+                        ));
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    );
 
     //   Padding(
     //   padding: const EdgeInsets.all(8.0),

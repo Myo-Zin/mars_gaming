@@ -1,7 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-import '../../2d/is_twod_avaliable.dart';
 import '../is_cryptoTwod_avaliable.dart';
 import '../models/crypto_two_d.dart';
 import '../repositories/crypto_two_d_repository.dart';

@@ -12,7 +12,6 @@ import '../models/game_report_detail_param.dart';
 import '../providers/providers.dart';
 import 'game_report_detail_page.dart';
 
-
 class GameReportPage extends ConsumerStatefulWidget {
   const GameReportPage({super.key});
   @override
@@ -75,7 +74,7 @@ class _CashInHistoryPageState extends ConsumerState<GameReportPage> {
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             // ExpansionChildWidget(
                             //   label: AppLocalizations.of(context).date,
                             //   content: reports.date,
@@ -171,7 +170,7 @@ class _CashInHistoryPageState extends ConsumerState<GameReportPage> {
                 error: (msg) => AppErrorWidget(
                   error: msg,
                   onRetry: () {
-                    ref.refresh(gameReportController);
+                    ref.invalidate(gameReportController);
                   },
                 ),
               ),

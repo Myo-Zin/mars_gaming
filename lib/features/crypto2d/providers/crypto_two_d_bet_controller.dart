@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 
 import '../models/crypto_two_d.dart';
 import '../repositories/crypto_two_d_repository.dart';

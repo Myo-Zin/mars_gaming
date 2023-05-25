@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mars_gaming/utils/extension.dart';
+
 import '../../../utils/app_color.dart';
 import '../../../utils/app_theme.dart';
-import '../../../utils/route.dart';
 import '../../../utils/validator.dart';
 import '../models/registeration_form.dart';
 import '../providers/providers.dart';
 import '../widgets/logo_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'code_verify_page.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
@@ -152,7 +150,6 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                         onPressed: state.isLoading || regState.isLoading
                             ? () {}
                             : () async {
-
                                 String? mesg = await ref
                                     .watch(checkPhoneController.notifier)
                                     .checkPhone(
@@ -162,14 +159,16 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                                     ref
                                         .read(registerScreenController.notifier)
                                         .verifyPhoneForRegister(
-                                      rf: RegisterationForm(
-                                        name: nameTextController.text,
-                                        phone: phoneTextController.text,
-                                        password: passwordTextController.text,
-                                        referral: referralTextController.text,
-                                      ),
-                                      context: context,
-                                    );
+                                          rf: RegisterationForm(
+                                            name: nameTextController.text,
+                                            phone: phoneTextController.text,
+                                            password:
+                                                passwordTextController.text,
+                                            referral:
+                                                referralTextController.text,
+                                          ),
+                                          context: context,
+                                        );
                                     // goto(
                                     //   context,
                                     //   page: CodeVerifyPage(
