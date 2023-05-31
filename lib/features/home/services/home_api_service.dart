@@ -1,4 +1,6 @@
-  import 'package:dio/dio.dart';
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:myvip/features/home/models/app_update_response.dart';
 // import 'package:myvip/features/home/models/banner_reponse.dart';
@@ -10,7 +12,7 @@ import '../models/banner_reponse.dart';
 import '../models/play_text_response.dart';
 import '../models/social_link_response.dart';
 
-class HomeApiService{
+class HomeApiService {
   HomeApiService(this._dio);
   final Dio _dio;
 
@@ -33,6 +35,7 @@ class HomeApiService{
       rethrow;
     }
   }
+
   Future<SocialLinks> getSocialLinks() async {
     try {
       final resp = await _dio.get(UrlConst.socialLinkUrl);
@@ -42,6 +45,7 @@ class HomeApiService{
       rethrow;
     }
   }
+
   static Future<AppUpdateData?> checkAppUpdate() async {
     try {
       final Dio dio = Dio(BaseOptions(

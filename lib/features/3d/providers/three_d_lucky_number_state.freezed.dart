@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'three_d_lucky_number_state.dart';
 
@@ -28,11 +28,11 @@ mixin _$ThreeDLuckyNumHistoryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
         data,
-    TResult Function(String message)? error,
+    TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,10 +55,10 @@ mixin _$ThreeDLuckyNumHistoryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Empty value)? empty,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Data value)? data,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,17 +76,20 @@ mixin _$ThreeDLuckyNumHistoryState {
 abstract class $ThreeDLuckyNumHistoryStateCopyWith<$Res> {
   factory $ThreeDLuckyNumHistoryStateCopyWith(ThreeDLuckyNumHistoryState value,
           $Res Function(ThreeDLuckyNumHistoryState) then) =
-      _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res>;
+      _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res,
+          ThreeDLuckyNumHistoryState>;
 }
 
 /// @nodoc
-class _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res>
+class _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res,
+        $Val extends ThreeDLuckyNumHistoryState>
     implements $ThreeDLuckyNumHistoryStateCopyWith<$Res> {
   _$ThreeDLuckyNumHistoryStateCopyWithImpl(this._value, this._then);
 
-  final ThreeDLuckyNumHistoryState _value;
   // ignore: unused_field
-  final $Res Function(ThreeDLuckyNumHistoryState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -97,13 +100,10 @@ abstract class _$$_EmptyCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EmptyCopyWithImpl<$Res>
-    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res>
+    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res, _$_Empty>
     implements _$$_EmptyCopyWith<$Res> {
   __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
-      : super(_value, (v) => _then(v as _$_Empty));
-
-  @override
-  _$_Empty get _value => super._value as _$_Empty;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -141,11 +141,11 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
         data,
-    TResult Function(String message)? error,
+    TResult? Function(String message)? error,
   }) {
     return empty?.call();
   }
@@ -180,10 +180,10 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Empty value)? empty,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Data value)? data,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
   }) {
     return empty?.call(this);
   }
@@ -217,13 +217,10 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res>
+    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -261,11 +258,11 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
         data,
-    TResult Function(String message)? error,
+    TResult? Function(String message)? error,
   }) {
     return loading?.call();
   }
@@ -300,10 +297,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Empty value)? empty,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Data value)? data,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -332,25 +329,24 @@ abstract class _Loading implements ThreeDLuckyNumHistoryState {
 abstract class _$$_DataCopyWith<$Res> {
   factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
       __$$_DataCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory});
 }
 
 /// @nodoc
 class __$$_DataCopyWithImpl<$Res>
-    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res>
+    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res, _$_Data>
     implements _$$_DataCopyWith<$Res> {
   __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
-      : super(_value, (v) => _then(v as _$_Data));
+      : super(_value, _then);
 
-  @override
-  _$_Data get _value => super._value as _$_Data;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? threeDLuckyNumHistory = freezed,
+    Object? threeDLuckyNumHistory = null,
   }) {
     return _then(_$_Data(
-      threeDLuckyNumHistory == freezed
+      null == threeDLuckyNumHistory
           ? _value._threeDLuckyNumHistory
           : threeDLuckyNumHistory // ignore: cast_nullable_to_non_nullable
               as List<ThreeDLuckyNumberHistory>,
@@ -367,6 +363,8 @@ class _$_Data implements _Data {
   final List<ThreeDLuckyNumberHistory> _threeDLuckyNumHistory;
   @override
   List<ThreeDLuckyNumberHistory> get threeDLuckyNumHistory {
+    if (_threeDLuckyNumHistory is EqualUnmodifiableListView)
+      return _threeDLuckyNumHistory;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_threeDLuckyNumHistory);
   }
@@ -391,6 +389,7 @@ class _$_Data implements _Data {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DataCopyWith<_$_Data> get copyWith =>
       __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
 
@@ -410,11 +409,11 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
         data,
-    TResult Function(String message)? error,
+    TResult? Function(String message)? error,
   }) {
     return data?.call(threeDLuckyNumHistory);
   }
@@ -449,10 +448,10 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Empty value)? empty,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Data value)? data,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
   }) {
     return data?.call(this);
   }
@@ -486,25 +485,24 @@ abstract class _Data implements ThreeDLuckyNumHistoryState {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({String message});
 }
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res>
+    extends _$ThreeDLuckyNumHistoryStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
+      : super(_value, _then);
 
-  @override
-  _$_Error get _value => super._value as _$_Error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
     return _then(_$_Error(
-      message == freezed
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -530,15 +528,15 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Error &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
@@ -558,11 +556,11 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<ThreeDLuckyNumberHistory> threeDLuckyNumHistory)?
         data,
-    TResult Function(String message)? error,
+    TResult? Function(String message)? error,
   }) {
     return error?.call(message);
   }
@@ -597,10 +595,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Empty value)? empty,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Data value)? data,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }

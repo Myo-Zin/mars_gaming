@@ -6,14 +6,18 @@ class AppUpdateResponse {
   AppUpdateResponse.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? AppUpdateData.fromJson(json['data']) : null;
   }
+
+  @override
+  String toString() => 'AppUpdateResponse(data: $data)';
 }
-class AppUpdateData    {
+
+class AppUpdateData {
   int? id;
   int? versionCode;
   String? versionName;
   String? downloadLink;
   int? forceUpdate;
-  int? showWallet;
+  int? walletHideAccountId;
   String? createdAt;
   String? updatedAt;
   String? description;
@@ -24,7 +28,7 @@ class AppUpdateData    {
     this.versionName,
     this.downloadLink,
     this.forceUpdate,
-    this.showWallet,
+    this.walletHideAccountId,
     this.createdAt,
     this.updatedAt,
     this.description,
@@ -36,14 +40,9 @@ class AppUpdateData    {
     versionName = json['version_name'];
     downloadLink = json['playstore'];
     forceUpdate = json['force_update'];
-    showWallet = json["show_wallet"];
+    walletHideAccountId = json["wallet_hide_version"];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     description = json['description'];
-  }
-
-  @override
-  String toString() {
-    return 'AppUpdateData(id: $id, versionCode: $versionCode, versionName: $versionName, downloadLink: $downloadLink, forceUpdate: $forceUpdate, showWallet: $showWallet, createdAt: $createdAt, updatedAt: $updatedAt, description: $description)';
   }
 }

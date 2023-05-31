@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mars_gaming/features/profile/providers/profile_state.dart';
 
 import '../../../core/enum.dart';
 import '../../../core/strings.dart';
@@ -20,8 +22,6 @@ import '../../profile/providers/profile_image_controller.dart';
 import '../../profile/providers/providers.dart';
 import '../../profile/widgets/logout_dialog.dart';
 import '../../winners_list/page/winner_list_page.dart';
-import '../providers/nav_controller.dart';
-import 'first_page.dart';
 
 class DrawerPage extends ConsumerStatefulWidget {
   const DrawerPage({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class DrawerPage extends ConsumerStatefulWidget {
 class _DrawerPageState extends ConsumerState<DrawerPage> {
   @override
   Widget build(BuildContext context) {
-    final profileController = ref.watch(profileControllerProvider);
+    final profileState = ref.watch(profileControllerProvider);
     final localImage = ref.watch(profileImagePickControllerProvider);
     return Drawer(
       backgroundColor: AppColor.mainColor,
@@ -61,22 +61,21 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
             const SizedBox(
               height: 8,
             ),
-            profileController.map(
-              unAuthenticated: (_) {
+            profileState.when(
+              unAuthenticated: () {
                 return Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      ref
-                          .read(naviIndexControllerProvider.notifier)
-                          .changeIndex(4);
+                      context.tabsRouter
+                          .setActiveIndex(profileState.showWallet() ? 4 : 3);
                       Navigator.pop(context);
                     },
                     child: const Text("Login"),
                   ),
                 );
               },
-              data: (data) {
+              data: (profile) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -101,18 +100,18 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                                         color: AppColor.accentColor,
                                       ),
                                       image: localImage == null
-                                          ? data.profileData.image != null
+                                          ? profile.image != null
                                               ? DecorationImage(
-                                                  image: NetworkImage(UrlConst
-                                                          .imagePrefix +
-                                                      data.profileData.image!),
+                                                  image: NetworkImage(
+                                                      UrlConst.imagePrefix +
+                                                          profile.image!),
                                                   fit: BoxFit.cover,
                                                 )
                                               : null
                                           : DecorationImage(
                                               image: FileImage(localImage),
                                               fit: BoxFit.cover)),
-                                  child: data.profileData.image == null
+                                  child: profile.image == null
                                       ? localImage == null
                                           ? Icon(
                                               CupertinoIcons.person,
@@ -126,53 +125,25 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '${AppLocalizations.of(context).level} : ${data.profileData.lvl2 == 0 ? 1 : 2}',
+                                      '${AppLocalizations.of(context).level} : ${profile.lvl2 == 0 ? 1 : 2}',
                                       style: const TextStyle(
                                         //color: AppColor.accentColor,
                                         fontSize: 15,
                                       ),
                                     ),
-                                    // Row(
-                                    //   mainAxisAlignment:
-                                    //       MainAxisAlignment.center,
-                                    //   children: [
-                                    //     Text(
-                                    //       'ID : ${data.profileData.userCode}',
-                                    //       style: const TextStyle(
-                                    //         // color: AppColor.accentColor,
-                                    //         fontSize: 15,
-                                    //       ),
-                                    //     ),
-                                    //     IconButton(
-                                    //       onPressed: () {
-                                    //         Clipboard.setData(ClipboardData(
-                                    //                 text: data
-                                    //                     .profileData.userCode))
-                                    //             .then((_) {
-                                    //           ScaffoldMessenger.of(context)
-                                    //               .showSnackBar(SnackBar(
-                                    //                   content: Text(
-                                    //                       "Copied to clipboard ${data.profileData.userCode}")));
-                                    //         });
-                                    //       },
-                                    //       icon: const Icon(
-                                    //         Icons.copy,
-                                    //         // color: AppColor.accentColor,
-                                    //       ),
-                                    //     )
-                                    //   ],
-                                    // ),
                                   ],
                                 ),
                                 const SizedBox(
                                   height: 4,
                                 ),
-                                data.profileData.lvl2 == 0
+                                profile.lvl2 == 0
                                     ? InkWell(
                                         onTap: () {
-                                          goto(context,
-                                              page: UploadLevelTwoPhotoPage(
-                                                  data.profileData));
+                                          goto(
+                                            context,
+                                            page: UploadLevelTwoPhotoPage(
+                                                profile),
+                                          );
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -209,15 +180,14 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
               },
               error: (error) {
                 return Center(
-                  child: Text(error.message),
+                  child: Text(error),
                 );
               },
-              loading: (_) => const Center(
+              loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
             ),
             Card(
-              // elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -227,9 +197,8 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(CupertinoIcons.profile_circled),
                     title: buildText(AppLocalizations.of(context).profile),
                     onTap: () {
-                      ref
-                          .read(naviIndexControllerProvider.notifier)
-                          .changeIndex(4);
+                      context.tabsRouter
+                          .setActiveIndex(profileState.showWallet() ? 4 : 3);
                       Navigator.pop(context);
                     },
                   ),
@@ -237,22 +206,19 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(CupertinoIcons.phone_circle),
                     title: buildText(AppLocalizations.of(context).contact),
                     onTap: () {
-                      ref
-                          .read(naviIndexControllerProvider.notifier)
-                          .changeIndex(3);
+                      context.tabsRouter
+                          .setActiveIndex(profileState.showWallet() ? 3 : 2);
                       Navigator.pop(context);
                     },
                   ),
-                  if (showWallet)
+                  if (profileState.showWallet())
                     ListTile(
                       leading: buildIcon(
                         Icons.shop,
                       ),
                       title: buildText(AppLocalizations.of(context).wallet),
                       onTap: () {
-                        ref
-                            .read(naviIndexControllerProvider.notifier)
-                            .changeIndex(2);
+                        context.tabsRouter.setActiveIndex(2);
                         Navigator.pop(context);
                       },
                     ),
@@ -262,9 +228,7 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     ),
                     title: buildText(AppLocalizations.of(context).promotion),
                     onTap: () {
-                      ref
-                          .read(naviIndexControllerProvider.notifier)
-                          .changeIndex(1);
+                      context.tabsRouter.setActiveIndex(1);
                       Navigator.pop(context);
                     },
                   ),
@@ -272,7 +236,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
               ),
             ),
             Card(
-              //elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -282,11 +245,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildImage(AssetString.football),
                     title: buildText(AppLocalizations.of(context).football),
                     onTap: () {
-                      // setState(() {
-                      //   widget._controller.index = 1;
-                      //   tabarIndexNotifier.value = 1;
-                      // });
-                      // Navigator.pop(context);
                       Navigator.pop(context);
                       goto(
                         context,
@@ -301,10 +259,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildImage(AssetString.cardgame),
                     title: buildText(AppLocalizations.of(context).cardGame),
                     onTap: () {
-                      // setState(() {
-                      //   widget._controller.index = 2;
-                      //   tabarIndexNotifier.value = 2;
-                      // });
                       Navigator.pop(context);
                       goto(
                         context,
@@ -397,11 +351,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     title: buildText(
                         "Crypto${AppLocalizations.of(context).twodSlips}"),
                     onTap: () {
-                      // setState(() {
-                      //   widget._controller.index = 1;
-                      //   tabarIndexNotifier.value = 1;
-                      // });
-                      // Navigator.pop(context);
                       Navigator.pop(context);
                       goto(context, page: const CryptoTwoDBetSlipsPage());
                     },
@@ -410,11 +359,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(Icons.list_alt),
                     title: buildText(AppLocalizations.of(context).twodSlips),
                     onTap: () {
-                      // setState(() {
-                      //   widget._controller.index = 1;
-                      //   tabarIndexNotifier.value = 1;
-                      // });
-                      // Navigator.pop(context);
                       Navigator.pop(context);
                       goto(context, page: const TwoDBetSlipsPage());
                     },
@@ -423,11 +367,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(Icons.list_alt),
                     title: buildText(AppLocalizations.of(context).threedSlips),
                     onTap: () {
-                      // setState(() {
-                      //   widget._controller.index = 1;
-                      //   tabarIndexNotifier.value = 1;
-                      // });
-                      // Navigator.pop(context);
                       Navigator.pop(context);
                       goto(context, page: const ThreeDBetSlipsPage());
                     },
@@ -436,11 +375,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(Icons.games),
                     title: buildText(AppLocalizations.of(context).gameHistory),
                     onTap: () {
-                      // setState(() {
-                      //   widget._controller.index = 1;
-                      //   tabarIndexNotifier.value = 1;
-                      // });
-                      // Navigator.pop(context);
                       Navigator.pop(context);
                       goto(context, page: const GameReportPage());
                     },
@@ -449,7 +383,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
               ),
             ),
             Card(
-              //elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -457,7 +390,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                 leading: buildIcon(Icons.language),
                 title: buildText(AppLocalizations.of(context).language),
                 onTap: () {
-                  //Navigator.pop(context);
                   _showLanguageChange(context, ref);
                 },
               ),
@@ -465,7 +397,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
             ref.watch(authControllerProvider).maybeMap(
               authenticated: (value) {
                 return Card(
-                  //elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -473,7 +404,6 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
                     leading: buildIcon(Icons.logout),
                     title: buildText('Logout'),
                     onTap: () {
-                      // Navigator.pop(context);
                       logoutDialog(context, ref);
                     },
                   ),

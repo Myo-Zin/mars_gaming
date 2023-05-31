@@ -40,6 +40,11 @@ class _PromotionPageState extends ConsumerState<PromotionPage> {
           ),
           body: promotionState.when(
             data: (promotionList) {
+              if (promotionList.isEmpty) {
+                return const Center(
+                  child: Text("No Promotion yet!"),
+                );
+              }
               return RefreshIndicator(
                 onRefresh: () async {
                   ref.invalidate(promotionController);
